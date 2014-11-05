@@ -134,6 +134,7 @@ $firstData->setCreditCardType($data['number'])
 		->setTransArmorToken($data['token'])
 		->setCreditCardName($data['name'])
 		->setCreditCardExpiration($data['exp'])
+		->setCreditCardType($data['cardtype'])
 		->setAmount($data['amount'])
 		->setReferenceNumber($orderId);
 
