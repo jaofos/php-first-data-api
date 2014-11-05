@@ -148,21 +148,17 @@ if($firstData->isError()) {
 }
 ```
 
-#### Pre Auth Complete
+#### Tagged Pre Auth Complete
 
 ```
-// Purchase Transaction type
+// Tagged Pre Auth Complete Transaction type
 $firstData = new FirstData(API_LOGIN, API_KEY, true);
 
 // Charge
-$firstData->setTransactionType(FirstData::TRAN_PREAUTHCOMPLETE);
-$firstData->setCreditCardType($data['number'])
-		->setTransArmorToken($data['token'])
-		->setCreditCardName($data['name'])
-		->setCreditCardExpiration($data['exp'])
+$firstData->setTransactionType(FirstData::TRAN_TAGGEDPREAUTHCOMPLETE);
+$firstData->setTransactionTag($data['transaction_tag'])
 		->setAuthNumber($dat['auth_number'])
-		->setAmount($data['amount'])
-		->setReferenceNumber($orderId);
+		->setAmount($data['amount']);
 
 $firstData->process();
 
@@ -177,7 +173,7 @@ if($firstData->isError()) {
 #### Refund
 
 ```
-// Purchase Transaction type
+// Refund Transaction type
 $firstData = new FirstData(API_LOGIN, API_KEY, true);
 
 // Charge
@@ -199,19 +195,17 @@ if($firstData->isError()) {
 }
 ```
 
-#### Void
+#### Tagged Void
 
 ```
-// Purchase Transaction type
+// Tagged Void Transaction type
 $firstData = new FirstData(API_LOGIN, API_KEY, true);
 
 // Charge
-$firstData->setTransactionType(FirstData::TRAN_VOID);
-$firstData->setCreditCardType($data['number'])
-		->setTransArmorToken($data['token'])
-		->setCreditCardName($data['name'])
-		->setCreditCardExpiration($data['exp'])
+$firstData->setTransactionType(FirstData::TRAN_TAGGEDVOID);
+$firstData->setTransactionTag($data['transaction_tag'])
 		->setAmount($data['amount'])
+		->setAuthNumber($data['auth_number'])
 		->setReferenceNumber($orderId);
 
 $firstData->process();

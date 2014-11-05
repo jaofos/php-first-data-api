@@ -334,6 +334,18 @@ class FirstData
 		$this->setPostData('customer_ref', $number);
 		return $this;
 	}
+	
+	/**
+	 * set Transaction Tag
+	 * 
+	 * @param string $tag
+	 * @return object
+	 */
+	public function setTransactionTag($tag) {
+		$this->setPostData('transaction_tag', $tag);
+		return $this;
+	}
+	
 	/**
 	 * Perform the API call
 	 * @return string
@@ -461,6 +473,13 @@ class FirstData
 	 */
 	public function getTransactionRecord() {
 		return $this->getValueByKey($this->getArrayResponse(), 'ctr');
+	}
+	/**
+	 * Get transaction tag
+	 * @return string
+	 */
+	public function getTransactionTag() {
+		return $this->getValueByKey($this->getArrayResponse(), 'transaction_tag');
 	}
 	/**
 	 * Get transaction auth number
@@ -844,7 +863,7 @@ class FirstData
 				'code' => '754',
 				'name' => 'Account Closed',
 				'action' => 'Cust',
-				'comments' => 'Bank account has been closed For PayPal and GoogleCheckout – the customer’s account was closed / restricted',
+				'comments' => 'Bank account has been closed For PayPal and GoogleCheckout â€“ the customerâ€™s account was closed / restricted',
 			),
 			201 => array(
 				'response' => 'R',
@@ -886,21 +905,21 @@ class FirstData
 				'code' => '218',
 				'name' => 'Invalid SKU Number',
 				'action' => 'Fix',
-				'comments' => 'Non‐numeric value was sent',
+				'comments' => 'Nonâ€�numeric value was sent',
 			),
 			219 => array(
 				'response' => 'R',
 				'code' => '219',
 				'name' => 'Invalid Credit Plan',
 				'action' => 'Fix',
-				'comments' => 'Non‐numeric value was sent',
+				'comments' => 'Nonâ€�numeric value was sent',
 			),
 			220 => array(
 				'response' => 'R',
 				'code' => '220',
 				'name' => 'Invalid Store Number',
 				'action' => 'Fix',
-				'comments' => 'Non‐numeric value was sent',
+				'comments' => 'Nonâ€�numeric value was sent',
 			),
 			225 => array(
 				'response' => 'R',
@@ -1005,7 +1024,7 @@ class FirstData
 				'code' => '243',
 				'name' => 'Invalid Purchase Level 3',
 				'action' => 'Fix',
-				'comments' => 'Data is inaccurate or missing, or the BIN is ineligible for P‐card',
+				'comments' => 'Data is inaccurate or missing, or the BIN is ineligible for Pâ€�card',
 			),
 			244 => array(
 				'response' => 'R',
@@ -1019,7 +1038,7 @@ class FirstData
 				'code' => '245',
 				'name' => 'Missing or Invalid Secure Payment Data',
 				'action' => 'Fix',
-				'comments' => 'Visa or MasterCard authentication data not in appropriate Base 64 encoding format or data provided on A non‐e‐Commerce transaction.',
+				'comments' => 'Visa or MasterCard authentication data not in appropriate Base 64 encoding format or data provided on A nonâ€�eâ€�Commerce transaction.',
 			),
 			246 => array(
 				'response' => 'R',
@@ -1068,14 +1087,14 @@ class FirstData
 				'code' => '253',
 				'name' => 'Invalid Tran. Type',
 				'action' => 'Fix',
-				'comments' => 'If an “R” (Retail Indicator) is sent for a transaction with a MOTO Merchant Category Code (MCC)',
+				'comments' => 'If an â€œRâ€� (Retail Indicator) is sent for a transaction with a MOTO Merchant Category Code (MCC)',
 			),
 			257 => array(
 				'response' => 'R',
 				'code' => '257',
 				'name' => 'Missing Cust Service Phone',
 				'action' => 'Fix',
-				'comments' => 'Card was authorized, but AVS did not match. The 100 was overwritten with a 260 per the merchant’s request Note: Conditional deposits only',
+				'comments' => 'Card was authorized, but AVS did not match. The 100 was overwritten with a 260 per the merchantâ€™s request Note: Conditional deposits only',
 			),
 			258 => array(
 				'response' => 'R',
@@ -1087,9 +1106,9 @@ class FirstData
 			261 => array(
 				'response' => 'R',
 				'code' => '261',
-				'name' => 'Account Not Eligible For Division’s Setup',
+				'name' => 'Account Not Eligible For Divisionâ€™s Setup',
 				'action' => 'N/A',
-				'comments' => 'Account number not eligible for division’s Account Updater program setup',
+				'comments' => 'Account number not eligible for divisionâ€™s Account Updater program setup',
 			),
 			262 => array(
 				'response' => 'R',
@@ -1222,7 +1241,7 @@ class FirstData
 				'code' => '303',
 				'name' => 'Processor Decline',
 				'action' => 'Cust.',
-				'comments' => 'Generic decline – No other information is being provided by the Issuer',
+				'comments' => 'Generic decline â€“ No other information is being provided by the Issuer',
 			),
 			304 => array(
 				'response' => 'D',
@@ -1355,7 +1374,7 @@ class FirstData
 				'code' => '530',
 				'name' => 'Do Not Honor',
 				'action' => 'Cust',
-				'comments' => 'Generic Decline – No other information is being provided by the issuer. Note: This is a hard decline for BML (will never pass with recycle attempts)',
+				'comments' => 'Generic Decline â€“ No other information is being provided by the issuer. Note: This is a hard decline for BML (will never pass with recycle attempts)',
 			),
 			531 => array(
 				'response' => 'D',
@@ -1381,7 +1400,7 @@ class FirstData
 			572 => array(
 				'response' => 'D',
 				'code' => '572',
-				'name' => 'Revocation of All Authorizations – Closed Account',
+				'name' => 'Revocation of All Authorizations â€“ Closed Account',
 				'action' => 'Cust',
 				'comments' => 'Cardholder has requested that all authorizations be stopped for this account due to closed account. Note: Visa only',
 			),
@@ -1593,7 +1612,7 @@ class FirstData
 				'code' => '902',
 				'name' => 'Process Unavailable',
 				'action' => 'Resend/ Call/ Cust.',
-				'comments' => 'System error/malfunction with Issuer For Debit – The link is down or setup issue; contact your First Data Representative.',
+				'comments' => 'System error/malfunction with Issuer For Debit â€“ The link is down or setup issue; contact your First Data Representative.',
 			),
 			903 => array(
 				'response' => 'D',
